@@ -15,3 +15,4 @@ end
 make, model = car("Honda Civic")
 p make == "Honda"
 p model.start_with?("C")
+p make.start_with?("H")
