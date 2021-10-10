@@ -44,7 +44,6 @@ prompt("Hello, #{name}.")
 
 # Main Loop
 loop do
-
   number1 = ''
   loop do
     prompt("Please enter a first number: ")
@@ -55,7 +54,6 @@ loop do
     else
       prompt("Hmm... that does not look like a valid number!")
     end
-
   end
   prompt("You have entered #{number1}.")
 
@@ -69,10 +67,9 @@ loop do
     else
       prompt("Hmm... that does not look like a valid number!")
     end
-
   end
-  prompt("You have entered #{number2}.")
 
+  prompt("You have entered #{number2}.")
   operator_prompt = <<-MSG
     What operation would you like to perform?
     1) add
@@ -112,5 +109,4 @@ loop do
   prompt("Do you want to perfom another calculation? (Y to calculate again)")
   answer = Kernel.gets().chomp()
   break unless answer.downcase().start_with?('y')
-
 end
