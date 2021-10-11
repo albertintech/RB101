@@ -44,7 +44,17 @@ prompt("Hello, #{name}.")
 
 # Main Loop
 loop do
-  number1 = ''
+  number1 = ''  number2 = ''
+  loop do
+    prompt("Please enter a second number: ")
+    number2 = Kernel.gets().chomp()
+
+    if valid_number?(number2)
+      break
+    else
+      prompt("Hmm... that does not look like a valid number!")
+    end
+  end
   loop do
     prompt("Please enter a first number: ")
     number1 = Kernel.gets().chomp()
