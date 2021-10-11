@@ -3,6 +3,7 @@ VALID_CHOICES = ['rock','paper','scissors']
 def prompt(message)
   Kernel.puts("=> #{message}")
 end
+
 def display_result(player, computer)
   if    (player == 'rock' && computer == 'scissors') ||
         (player == 'paper' && computer == 'rock') ||
