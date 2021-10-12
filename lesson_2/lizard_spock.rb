@@ -17,14 +17,6 @@ def win?(first, second)
     (first == 'spock' && second == 'scissors')
 end
 
-# def lose?(first, second)
-#   (first == 'rock' && (second == 'paper' || 'spock')) ||
-#     (first == 'paper' && (second == 'scissors' || 'lizard')) ||
-#     (first == 'scissors' && (second == 'rock' || 'spock')) ||
-#     (first == 'lizard' && (second == 'rock' || 'scissors')) ||
-#     (first == 'spock' && (second == 'lizard' || 'paper'))
-# end
-
 def tie?(first, second)
   first == second
 end
