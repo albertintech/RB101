@@ -23,34 +23,25 @@ end
 
 def display_result(player, computer)
   if tie?(player, computer)
-    prompt("It's a tie! No points awarded.")
+    prompt("It's a tie!")
   elsif win?(player, computer)
-    prompt("You win!")
-    @player_score += 1
+    prompt("You win a point!")
+    # @player_score += 1
   else
-    prompt("You lost!")
-    @computer_score += 1
+    prompt("Computer wins a point!")
+    # @computer_score += 1
   end
 end
 
-
-# def display_score(player, computer)
-#   if tie?(player, computer)
-#     prompt("No points awarded for a tie.")
-#   elsif win?(player, computer)
-#     return player_score += 1
-#   else
-#     return computer_score += 1
-#   end
-# end
-
-# def score(wins, loses)
-#    If player wins, score += 1
-#    If computer wins, score += 1
-#    First to score 3 wins
-#    If player score = 3, puts Player wins!
-#    If computer score = 3, puts Computer wins!
-# end
+def display_score(player, computer)
+  if tie?(player, computer)
+    prompt("No points awarded for a tie.")
+  elsif win?(player, computer)
+    @player_score += 1
+  else
+    @computer_score += 1
+  end
+end
 
 short_names = <<-MSG
   Abbreviations for each move:
@@ -66,8 +57,8 @@ MSG
 
 loop do
   player_choice = ''
+  prompt("First player to score 3 wins is the Grand Champion!")
   loop do
-    prompt("Current scores are Player:#{@player_score} and Computer:#{@computer_score}")
     prompt(short_names)
     prompt("Select an abbreviation to play: #{VALID_CHOICES.join(', ')}")
     player_choice = Kernel.gets().chomp()
@@ -84,9 +75,13 @@ loop do
   prompt("You chose #{player_choice}. Computer chose: #{computer_choice}.")
 
   display_result(player_choice, computer_choice)
-  # display_score(player_choice, computer_choice)
+  display_score(player_choice, computer_choice)
 
   # prompt("Do you want to play again? (y/n)")
   # answer = Kernel.gets().chomp()
-  break if (@player_score == 3) || (@computer_score == 3)
+  prompt("Scores: Player:#{@player_score} - Computer:#{@computer_score}.")
+  if (@player_score == 3) || (@computer_score == 3)
+    prompt("A player has reached 3 wins! Game over!")
+    break
+  end
 end
