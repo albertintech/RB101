@@ -23,13 +23,26 @@ end
 
 def display_result(player, computer)
   if tie?(player, computer)
-    prompt("It's a tie!")
+    prompt("It's a tie! No points awarded.")
   elsif win?(player, computer)
     prompt("You win!")
+    @player_score += 1
   else
     prompt("You lost!")
+    @computer_score += 1
   end
 end
+
+
+# def display_score(player, computer)
+#   if tie?(player, computer)
+#     prompt("No points awarded for a tie.")
+#   elsif win?(player, computer)
+#     return player_score += 1
+#   else
+#     return computer_score += 1
+#   end
+# end
 
 # def score(wins, loses)
 #    If player wins, score += 1
@@ -48,9 +61,13 @@ short_names = <<-MSG
   Spock    => sp
 MSG
 
+@player_score = 0
+@computer_score = 0
+
 loop do
   player_choice = ''
   loop do
+    prompt("Current scores are Player:#{@player_score} and Computer:#{@computer_score}")
     prompt(short_names)
     prompt("Select an abbreviation to play: #{VALID_CHOICES.join(', ')}")
     player_choice = Kernel.gets().chomp()
@@ -67,8 +84,9 @@ loop do
   prompt("You chose #{player_choice}. Computer chose: #{computer_choice}.")
 
   display_result(player_choice, computer_choice)
+  # display_score(player_choice, computer_choice)
 
-  prompt("Do you want to play again? (y/n)")
-  answer = Kernel.gets().chomp()
-  break unless answer.downcase().start_with?('y')
+  # prompt("Do you want to play again? (y/n)")
+  # answer = Kernel.gets().chomp()
+  break if (@player_score == 3) || (@computer_score == 3)
 end
