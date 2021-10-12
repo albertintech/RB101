@@ -1,20 +1,20 @@
-VALID_CHOICES = ['rock', 'paper', 'scissors', 'lizard', 'spock']
+VALID_CHOICES = ['r', 'p', 'sc', 'l', 'sp']
 
 def prompt(message)
   Kernel.puts("=> #{message}")
 end
 
 def win?(first, second)
-  (first == 'rock' && second == 'scissors') ||
-    (first == 'paper' && second == 'rock') ||
-    (first == 'scissors' && second == 'paper') ||
-    (first == 'lizard' && second == 'paper') ||
-    (first == 'spock' && second == 'rock') ||
-    (first == 'rock' && second == 'lizard') ||
-    (first == 'paper' && second == 'spock') ||
-    (first == 'scissors' && second == 'lizard') ||
-    (first == 'lizard' && second == 'spock') ||
-    (first == 'spock' && second == 'scissors')
+  (first == 'r' && second == 'sc') ||
+    (first == 'p' && second == 'r') ||
+    (first == 'sc' && second == 'p') ||
+    (first == 'l' && second == 'p') ||
+    (first == 'sp' && second == 'r') ||
+    (first == 'r' && second == 'l') ||
+    (first == 'p' && second == 'sp') ||
+    (first == 'sc' && second == 'l') ||
+    (first == 'l' && second == 'sp') ||
+    (first == 'sp' && second == 'sc')
 end
 
 def tie?(first, second)
@@ -31,10 +31,28 @@ def display_result(player, computer)
   end
 end
 
+# def score(wins, loses)
+#    If player wins, score += 1
+#    If computer wins, score += 1
+#    First to score 3 wins
+#    If player score = 3, puts Player wins!
+#    If computer score = 3, puts Computer wins!
+# end
+
+short_names = <<-MSG
+  Abbreviations for each move:
+  rock     => r
+  paper    => p
+  scissors => sc
+  lizard   => l
+  Spock    => sp
+MSG
+
 loop do
   player_choice = ''
   loop do
-    prompt("Choose one: #{VALID_CHOICES.join(', ')}")
+    prompt(short_names)
+    prompt("Select an abbreviation to play: #{VALID_CHOICES.join(', ')}")
     player_choice = Kernel.gets().chomp()
 
     if VALID_CHOICES.include?(player_choice)
