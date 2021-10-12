@@ -1,4 +1,4 @@
-VALID_CHOICES = ['rock', 'paper', 'scissors']
+VALID_CHOICES = ['rock', 'paper', 'scissors', 'lizard', 'spock']
 
 def prompt(message)
   Kernel.puts("=> #{message}")
@@ -7,22 +7,35 @@ end
 def win?(first, second)
   (first == 'rock' && second == 'scissors') ||
     (first == 'paper' && second == 'rock') ||
-    (first == 'scissors' && second == 'paper')
+    (first == 'scissors' && second == 'paper') ||
+    (first == 'lizard' && second == 'paper') ||
+    (first == 'spock' && second == 'rock') ||
+    (first == 'rock' && second == 'lizard') ||
+    (first == 'paper' && second == 'spock') ||
+    (first == 'scissors' && second == 'lizard') ||
+    (first == 'lizard' && second == 'spock') ||
+    (first == 'spock' && second == 'scissors')
 end
 
-def lose?(first, second)
-  (first == 'rock' && second == 'paper') ||
-    (first == 'paper' && second == 'scissors') ||
-    (first == 'scissors' && second == 'rock')
+# def lose?(first, second)
+#   (first == 'rock' && (second == 'paper' || 'spock')) ||
+#     (first == 'paper' && (second == 'scissors' || 'lizard')) ||
+#     (first == 'scissors' && (second == 'rock' || 'spock')) ||
+#     (first == 'lizard' && (second == 'rock' || 'scissors')) ||
+#     (first == 'spock' && (second == 'lizard' || 'paper'))
+# end
+
+def tie?(first, second)
+  first == second
 end
 
 def display_result(player, computer)
-  if win?(player, computer)
-    prompt("You won!")
-  elsif lose?(player, computer)
-    prompt("You lost!")
+  if tie?(player, computer)
+    prompt("It's a tie!")
+  elsif win?(player, computer)
+    prompt("You win!")
   else
-    prompt("Tie!")
+    prompt("You lost!")
   end
 end
 
