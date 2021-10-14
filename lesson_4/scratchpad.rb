@@ -1,11 +1,17 @@
-str = 'abcdefghi'
+# Looping Through a Hash Example
 
-puts "The string is #{str}"
+number_of_pets = {
+  'dogs' => 2,
+  'cats' => 4,
+  'fish' => 1
+}
+pets = number_of_pets.keys # => ['dogs', 'cats', 'fish']
+counter = 0
 
-puts "The string is #{str.length} characters long"
-
-puts "The character at index 2 is #{str[2]}"
-
-puts "Starting with index 2, I will return 4 characters using str[2, 4]: #{str[2, 4]}"
-
-puts "Using str[2, 4] is actually a call to the String#slice method and equivalent to str.slice(2, 4): #{str.slice(2, 4)}"
+loop do
+  break if counter == number_of_pets.size
+  current_pet = pets[counter]
+  current_pet_number = number_of_pets[current_pet]
+  puts "I have #{current_pet_number} #{current_pet}!"
+  counter += 1
+end
