@@ -14,7 +14,7 @@
 #################################################################
 
 # input: string
-# output: string
+# output: array with found palindrome substrings
 # rules:
 #       Explicit Requirements:
           # - Return every substring which is a palindrome.
