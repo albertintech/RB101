@@ -18,9 +18,11 @@ In order to loop through the hash, we need:
  - An array of the hash keys
  - Two placeholder variables:
     - One to hold each key per iteration
+      - And use in string interpolation
     - One to hold each value per iteration
+      - And use in string interpolation
 
-The patter will be:
+The pattern will be:
 
  - The hash
  - The array of keys
