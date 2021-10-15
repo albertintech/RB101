@@ -37,7 +37,8 @@
 
 # Pre-loop housekeeping: an array of the keys and counter initialization
 # Now let's get the keys of the hash isolated with an array of keys
-array_of_keys_in_hash = hash.keys => ['key1', 'key2', 'key3', 'key4']
+array_of_keys_in_hash = hash.keys
+# => ['key1', 'key2', 'key3', 'key4']
 
 # We need this array to iterate through each key by means of a counter.
 
@@ -49,7 +50,8 @@ loop do
 
 # First, we will check if we need to carry out the logic of our loop with a break if statement:
 
-break if counter >= hash.size # We could also use the length method, either works
+break if counter >= hash.size
+# We could also use the length method, either works fine.
 # Remember, our counter will do two things: help us return each element in the array of keys by means of the element reference method (array[number of index]). The counter will also track each iteration and serve as the top of the loop checkpoint.
 
 array_of_keys_in_hash[counter]
@@ -61,8 +63,9 @@ current_key = array_of_keys_in_hash[counter]
 # This variable ('current_key') is then used as the element reference argument on the original hash.
 
 hash[current_key]
+# => returns value paired to key, ie 'value1'
 
-# As each key value ('current_key') returns the corresponding value, the value is placed into a variable:
+# As each key ('current_key') returns the corresponding value, the value is placed into a variable:
 
 current_value = hash[current_key]
 
@@ -95,3 +98,8 @@ loop do
   puts "There is this the current key: '#{current_key}' with current value: '#{current_value}'."
   counter += 1
 end
+####################### Exercises
+
+1. Given a hash, write a loop program that prints each key
+2. Given a hash, write a loop program that prints each value
+3. Given a hash, write a loop program that prints each key/value pair
