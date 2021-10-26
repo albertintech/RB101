@@ -1,3 +1,9 @@
+Prereqs:
+# hashes
+# uniq
+# each { || }
+# count
+
 # Write a method that counts the number of occurrences of each element in a given array.
 
 vehicles = [
