@@ -2,10 +2,18 @@
 
 # Example:
 
-repeat('Hello', 3)
+# repeat('Hello', 3)
 
 # Output:
 
-Hello
-Hello
-Hello
+# Hello
+# Hello
+# Hello
+
+def repeat(string, reps)
+  reps.times do
+    puts string
+  end
+end
+
+repeat('Hello', 3)
