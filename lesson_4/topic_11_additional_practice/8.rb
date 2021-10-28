@@ -13,3 +13,5 @@ numbers.each do |number|
   p number
   numbers.pop(1)
 end
+
+# Confusing. Revisit.
