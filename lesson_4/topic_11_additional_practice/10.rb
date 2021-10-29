@@ -31,3 +31,8 @@ munsters.each do |name, details|
     details["age_group"] = "senior"
   end
 end
+
+# how to add a new key-value pair within a hash
+# munsters.each do |name, details|
+#   details['test'] = "empty"
+# end
