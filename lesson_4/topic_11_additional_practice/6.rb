@@ -2,12 +2,10 @@
 
 flintstones = %w(Fred Barney Wilma Betty BamBam Pebbles)
 
-# LS Solution
+# Hint: use map!
 
 flintstones.map! do |name|
   name[0, 3]
 end
 
-# Alternate LS Solution
-
-flintstones.map! { |name| name[0,3] }
+p flintstones
