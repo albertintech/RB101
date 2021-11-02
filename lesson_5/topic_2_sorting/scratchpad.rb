@@ -13,3 +13,4 @@ puts "Now let's reverse the order by changing the logic in the block."
 new_arr = arr.sort { |a, b| b <=> a }
 
 puts "This is the sorted array in descending order: #{new_arr}"
+#######################################
