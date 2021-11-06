@@ -1,0 +1,33 @@
+Outline
+  What is debugging?
+  Debugging Steps
+  Debugging Tools/pry
+  What is pry?
+  Using pry
+  Invoking pry at runtime
+  Accessing variables and scope
+  Debugging with pry
+  Stepping through code with pry-byebug
+
+1. What is debugging?
+Bugs are human errors in code
+  - If we made them, we can fix them!
+2. Debugging is the process of identifying and fixing those errors
+  - A lot of time is spent doing this
+3. Mistakes happen. Important to know how to deal with them.
+
+
+How do we debug code? => Debugging Steps
+
+Identify the Problem
+  - Track down the problem => Detective work!
+
+Understand the Problem
+  - Why is this code causing a problem?
+Implement a Solution
+  - Change the code in order to eliminate the bug!
+
+Types of Errors
+1. Syntax Errors
+- Error in writing the code; the code does not conform to the grammar of the programming language 
+2. Logical Errors
