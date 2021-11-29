@@ -13,6 +13,7 @@ end
 
 def display_board(brd)
   system 'clear'
+  puts "You are #{PLAYER_MARKER}. Your opponent is #{COMPUTER_MARKER}."
   puts ""
   puts "     |     |"
   puts "  #{brd[1]}  |  #{brd[2]}  |  #{brd[3]}  "
@@ -87,6 +88,7 @@ def detect_winner(brd)
   nil
 end
 
+loop do
 board = initialize_board
 display_board(board)
 
@@ -105,3 +107,10 @@ if winner?(board)
 else
   prompt "It's a tie!"
 end
+
+  prompt "Play again? (y or n)"
+  answer = gets.chomp
+  break unless answer.downcase.start_with?('y')
+end
+
+prompt "Thanks for playing!"
