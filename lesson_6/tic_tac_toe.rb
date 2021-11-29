@@ -11,6 +11,7 @@ end
 # 4 5 6
 # 7 8 9
 
+# rubocop:disable Metrics/AbcSize
 def display_board(brd)
   system 'clear'
   puts "You are #{PLAYER_MARKER}. Your opponent is #{COMPUTER_MARKER}."
@@ -28,24 +29,25 @@ def display_board(brd)
   puts "     |     |"
   puts ""
 end
+# rubocop:enable Metrics/AbcSize
 
 def initialize_board
   new_board = {}
-  (1..9).each {|num| new_board[num] = INITIAL_MARKER}
+  (1..9).each { |num| new_board[num] = INITIAL_MARKER }
   new_board
 end
 
 def empty_squares(brd)
-  brd.keys.select {|num| brd[num] == INITIAL_MARKER}
+  brd.keys.select { |num| brd[num] == INITIAL_MARKER }
 end
 
 def player_move(brd)
   square = ''
   loop do
-  prompt "Choose a square (#{empty_squares(brd).join(', ')}):"
-  square = gets.chomp.to_i
-  break if empty_squares(brd).include?(square)
-  prompt "Sorry, not a valid choice."
+    prompt "Choose a square ( #{empty_squares(brd).join(', ')} ):"
+    square = gets.chomp.to_i
+    break if empty_squares(brd).include?(square)
+    prompt "Sorry, not a valid choice."
   end
   brd[square] = PLAYER_MARKER
 end
@@ -70,18 +72,14 @@ end
 
 def detect_winner(brd)
   winning_lines = [
-    [1,2,3], [4,5,6], [7,8,9], # wins by rows
-    [1,4,7], [2,5,8], [3,6,9], # wins by columns
-    [1,5,9], [3,5,7]           # wins crosswise
+    [1, 2, 3], [4, 5, 6], [7, 8, 9], # wins by rows
+    [1, 4, 7], [2, 5, 8], [3, 6, 9], # wins by columns
+    [1, 5, 9], [3, 5, 7]
   ]
   winning_lines.each do |line| # each line is sub array of 3 values
-    if brd[line[0]] == PLAYER_MARKER &&
-      brd[line[1]] == PLAYER_MARKER &&
-      brd[line[2]] == PLAYER_MARKER
+    if brd.values_at(*line).count(PLAYER_MARKER) == 3
       return 'Player'
-    elsif brd[line[0]] == COMPUTER_MARKER &&
-      brd[line[1]] == COMPUTER_MARKER &&
-      brd[line[2]] == COMPUTER_MARKER
+    elsif brd.values_at(*line).count(COMPUTER_MARKER) == 3
       return 'Computer'
     end
   end
@@ -89,24 +87,23 @@ def detect_winner(brd)
 end
 
 loop do
-board = initialize_board
-display_board(board)
-
-loop do
-  player_move(board)
+  board = initialize_board
   display_board(board)
-  break if winner?(board) || board_full?(board)
 
-  computer_move(board)
-  display_board(board)
-  break if winner?(board) || board_full?(board)
-end
+  loop do
+    player_move(board)
+    display_board(board)
+    break if winner?(board) || board_full?(board)
+    computer_move(board)
+    display_board(board)
+    break if winner?(board) || board_full?(board)
+  end
 
-if winner?(board)
-  prompt "#{detect_winner(board)} won!"
-else
-  prompt "It's a tie!"
-end
+  if winner?(board)
+    prompt "#{detect_winner(board)} won!"
+  else
+    prompt "It's a tie!"
+  end
 
   prompt "Play again? (y or n)"
   answer = gets.chomp
