@@ -44,7 +44,7 @@ end
 def player_move(brd)
   square = ''
   loop do
-    prompt "Choose a square ( #{empty_squares(brd).join(', ')} ):"
+    prompt "Choose a position to place a piece: #{joinor(empty_squares(brd))}"
     square = gets.chomp.to_i
     break if empty_squares(brd).include?(square)
     prompt "Sorry, not a valid choice."
@@ -63,6 +63,17 @@ end
 
 def winner?(brd)
   !!detect_winner(brd) # !! turns object into boolean
+end
+
+def joinor(arr, delimiter=', ', word='or')
+ case arr.size
+ when 0 then ''
+ when 1 then arr.first
+ when 2 then arr.join(" #{word} ")
+ else
+   arr[-1] = "#{word} #{arr.last}"
+   arr.join(delimiter)
+ end
 end
 
 # Square number designations:
